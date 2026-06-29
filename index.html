@@ -6,12 +6,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
     <style>
-        body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #fce4ec; margin: 0; }
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #fce4ec; margin: 0; font-family: sans-serif; }
         #flipbook { width: 600px; height: 400px; }
         .page { background: white; border: 1px solid #ccc; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
 
         /* 4-Layer Cake Style */
-        .cake { display: flex; flex-direction: column; align-items: center; }
+        .cake { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
         .layer { width: 160px; height: 35px; border-radius: 5px; margin-bottom: 2px; }
         .l1 { background-color: #ff80ab; }
         .l2 { background-color: #ce93d8; }
@@ -47,8 +47,14 @@
     </div>
 
     <script>
-        // Initialize Turn.js
-        $("#flipbook").turn({ width: 600, height: 400, autoCenter: true });
+        $(document).ready(function() {
+            // Initialize Turn.js
+            $("#flipbook").turn({
+                width: 600,
+                height: 400,
+                autoCenter: true
+            });
+        });
 
         // Blow Candle Logic
         function blowCandle() {
