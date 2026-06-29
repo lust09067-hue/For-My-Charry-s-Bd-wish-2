@@ -7,16 +7,21 @@
     <style>
         body { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #fce4ec; font-family: sans-serif; margin: 0; }
         
-        /* Cake Style */
-        .cake { position: relative; display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
-        .layer { width: 200px; height: 40px; border-radius: 5px; margin-bottom: 2px; }
+                /* ကိတ်မုန့် */
+        .cake-container { display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+        .layer { width: 180px; height: 40px; border-radius: 15px 15px 5px 5px; margin-bottom: 2px; box-shadow: inset 0 0 10px rgba(0,0,0,0.1); }
         .layer-1 { background-color: #ffb7b2; }
-        .layer-2 { background-color: #b39ddb; }
+        .layer-2 { background-color: #ce93d8; }
         .layer-3 { background-color: #ffcc80; }
+        .layer-4 { background-color: #a5d6a7; border-radius: 15px; }
 
-        /* Candle & Flame */
-        .candle { width: 15px; height: 50px; background-color: white; border-radius: 5px; position: relative; margin-bottom: 5px; }
-        .flame { width: 15px; height: 20px; background-color: orange; border-radius: 50% 50% 20% 20%; position: absolute; top: -20px; animation: flicker 0.5s infinite alternate; }
+        /* ဖယောင်းတိုင် */
+        .candle { width: 12px; height: 50px; background-color: #fff; border-radius: 5px; position: relative; margin-bottom: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+        .flame { 
+            width: 15px; height: 20px; background-color: #ff9800; border-radius: 50% 50% 20% 20%; 
+            position: absolute; top: -20px; left: -1.5px; 
+            animation: flicker 0.6s infinite alternate; transition: opacity 0.3s;
+
         
         @keyframes flicker { 
             0% { transform: scale(1); opacity: 1; } 
@@ -40,7 +45,7 @@
         <div class="layer layer-3"></div>
     </div>
 
-    <button onclick="blowCandle()">မီးကိုမှုတ်ရန်</button>
+    <button onclick="blowCandle()">မီးမှုတ်ရန် မီးစလေးကိုထိပါ</button>
     <div id="message">Happy Birthday Charry! 🎂✨</div>
 
     <script>
