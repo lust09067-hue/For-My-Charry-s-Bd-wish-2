@@ -2,64 +2,53 @@
 <html lang="my">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Charry</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
     <style>
-        body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #fce4ec; margin: 0; font-family: sans-serif; }
-        #flipbook { width: 600px; height: 400px; }
-        .page { background: white; border: 1px solid #ccc; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
-
-        /* 4-Layer Cake Style */
-        .cake { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
-        .layer { width: 160px; height: 35px; border-radius: 5px; margin-bottom: 2px; }
-        .l1 { background-color: #ff80ab; }
-        .l2 { background-color: #ce93d8; }
-        .l3 { background-color: #ffcc80; }
-        .l4 { background-color: #81c784; }
+        body { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #fce4ec; font-family: sans-serif; margin: 0; }
+        
+        /* Cake Style */
+        .cake { position: relative; display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
+        .layer { width: 200px; height: 40px; border-radius: 5px; margin-bottom: 2px; }
+        .layer-1 { background-color: #ffb7b2; }
+        .layer-2 { background-color: #b39ddb; }
+        .layer-3 { background-color: #ffcc80; }
 
         /* Candle & Flame */
-        .candle { width: 10px; height: 40px; background-color: white; border-radius: 2px; position: relative; margin-bottom: 5px; }
-        .flame { width: 10px; height: 15px; background-color: orange; border-radius: 50%; position: absolute; top: -15px; animation: flicker 0.5s infinite alternate; }
-        @keyframes flicker { 0% { transform: scale(1); } 100% { transform: scale(1.2); } }
+        .candle { width: 15px; height: 50px; background-color: white; border-radius: 5px; position: relative; margin-bottom: 5px; }
+        .flame { width: 15px; height: 20px; background-color: orange; border-radius: 50% 50% 20% 20%; position: absolute; top: -20px; animation: flicker 0.5s infinite alternate; }
+        
+        @keyframes flicker { 
+            0% { transform: scale(1); opacity: 1; } 
+            100% { transform: scale(1.2); opacity: 0.8; } 
+        }
 
-        button { margin-top: 20px; padding: 10px 20px; background: #ff4081; color: white; border: none; cursor: pointer; border-radius: 5px; }
+        /* Button & Message */
+        button { padding: 10px 25px; font-size: 18px; cursor: pointer; border-radius: 20px; border: none; background: #ff4081; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-top: 30px; }
+        button:hover { background: #f50057; }
+        #message { margin-top: 20px; font-size: 24px; font-weight: bold; color: #d81b60; opacity: 0; transition: opacity 0.5s; }
     </style>
 </head>
 <body>
 
-    <div id="flipbook">
-        <div class="page">
-            <h3>ကိတ်မုန့်လေးကို ကြည့်လိုက်ပါ</h3>
-            <div class="cake">
-                <div class="candle" id="candle"><div class="flame" id="flame"></div></div>
-                <div class="layer l1"></div>
-                <div class="layer l2"></div>
-                <div class="layer l3"></div>
-                <div class="layer l4"></div>
-            </div>
-            <button onclick="blowCandle()">မီးကိုမှုတ်ရန်</button>
+    <div class="cake">
+        <div class="candle" id="candle">
+            <div class="flame" id="flame"></div>
         </div>
-        <div class="page">
-            <h2>Happy Birthday Charry! 🎂</h2>
-            <p>မွေးနေ့မှာ စိတ်၏ချမ်းသာခြင်း၊ ကိုယ်၏ကျန်းမာခြင်းနဲ့ ပြည့်စုံပါစေ။</p>
-        </div>
+        <div class="layer layer-1"></div>
+        <div class="layer layer-2"></div>
+        <div class="layer layer-3"></div>
     </div>
 
-    <script>
-        $(document).ready(function() {
-            // Initialize Turn.js
-            $("#flipbook").turn({
-                width: 600,
-                height: 400,
-                autoCenter: true
-            });
-        });
+    <button onclick="blowCandle()">မီးကိုမှုတ်ရန်</button>
+    <div id="message">Happy Birthday Charry! 🎂✨</div>
 
-        // Blow Candle Logic
+    <script>
         function blowCandle() {
+            // မီးတောက်ကို ပျောက်သွားအောင်လုပ်မယ်
             document.getElementById('flame').style.display = 'none';
-            alert("မီးငြိမ်းသွားပါပြီ! အခု စာအုပ်ကို လှန်ကြည့်လိုက်ပါ");
+            // မက်ဆေ့ချ်ကို ပေါ်လာအောင်လုပ်မယ်
+            document.getElementById('message').style.opacity = '1';
         }
     </script>
 </body>
