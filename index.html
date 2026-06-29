@@ -5,56 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Charry</title>
     <style>
-        body { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #fce4ec; font-family: sans-serif; margin: 0; }
-        
-                /* ကိတ်မုန့် */
-        .cake-container { display: flex; flex-direction: column; align-items: center; cursor: pointer; }
-        .layer { width: 180px; height: 40px; border-radius: 15px 15px 5px 5px; margin-bottom: 2px; box-shadow: inset 0 0 10px rgba(0,0,0,0.1); }
-        .layer-1 { background-color: #ffb7b2; }
-        .layer-2 { background-color: #ce93d8; }
-        .layer-3 { background-color: #ffcc80; }
-        .layer-4 { background-color: #a5d6a7; border-radius: 15px; }
-
-        /* ဖယောင်းတိုင် */
-        .candle { width: 12px; height: 50px; background-color: #fff; border-radius: 5px; position: relative; margin-bottom: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
-        .flame { 
-            width: 15px; height: 20px; background-color: #ff9800; border-radius: 50% 50% 20% 20%; 
-            position: absolute; top: -20px; left: -1.5px; 
-            animation: flicker 0.6s infinite alternate; transition: opacity 0.3s;
-
-        
-        @keyframes flicker { 
-            0% { transform: scale(1); opacity: 1; } 
-            100% { transform: scale(1.2); opacity: 0.8; } 
+        body { 
+            display: flex; justify-content: center; align-items: center; 
+            height: 100vh; background-color: #fce4ec; 
+            font-family: sans-serif; margin: 0; 
         }
-
-        /* Button & Message */
-        button { padding: 10px 25px; font-size: 18px; cursor: pointer; border-radius: 20px; border: none; background: #ff4081; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-top: 30px; }
-        button:hover { background: #f50057; }
-        #message { margin-top: 20px; font-size: 24px; font-weight: bold; color: #d81b60; opacity: 0; transition: opacity 0.5s; }
+        .card { width: 300px; height: 400px; perspective: 1000px; cursor: pointer; }
+        .card-inner { 
+            position: relative; width: 100%; height: 100%; 
+            text-align: center; transition: transform 0.8s; 
+            transform-style: preserve-3d; 
+        }
+        .card:hover .card-inner { transform: rotateY(180deg); }
+        .front, .back { 
+            position: absolute; width: 100%; height: 100%; 
+            backface-visibility: hidden; display: flex; 
+            flex-direction: column; justify-content: center; 
+            align-items: center; border-radius: 20px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+            padding: 20px; box-sizing: border-box;
+        }
+        .front { background-color: #ff80ab; color: white; }
+        .back { background-color: #ffffff; color: #333; transform: rotateY(180deg); }
+        h1 { margin: 0; }
     </style>
 </head>
 <body>
-
-    <div class="cake">
-        <div class="candle" id="candle">
-            <div class="flame" id="flame"></div>
+    <div class="card">
+        <div class="card-inner">
+            <div class="front">
+                <h1>Happy Birthday!</h1>
+                <p>ကတ်လေးကို ဖိနှိပ်ကြည့်ပါ</p>
+            </div>
+            <div class="back">
+                <h2>ပျော်ရွှင်စရာ မွေးနေ့လေး ဖြစ်ပါစေ</h2>
+                <p>ဒီနေ့မှာ အရာအားလုံး အဆင်ပြေပြီး ပျော်ရွှင်နိုင်ပါစေလို့ ဆုတောင်းပေးလိုက်ပါတယ် ကိုကို့ချစ်လေးရေ</p>
+            </div>
         </div>
-        <div class="layer layer-1"></div>
-        <div class="layer layer-2"></div>
-        <div class="layer layer-3"></div>
     </div>
-
-    <button onclick="blowCandle()">မီးမှုတ်ရန် မီးစလေးကိုထိပါ</button>
-    <div id="message">Happy Birthday Charry! 🎂✨</div>
-
-    <script>
-        function blowCandle() {
-            // မီးတောက်ကို ပျောက်သွားအောင်လုပ်မယ်
-            document.getElementById('flame').style.display = 'none';
-            // မက်ဆေ့ချ်ကို ပေါ်လာအောင်လုပ်မယ်
-            document.getElementById('message').style.opacity = '1';
-        }
-    </script>
 </body>
 </html>
