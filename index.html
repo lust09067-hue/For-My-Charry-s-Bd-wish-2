@@ -3,45 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Charry</title>
+    <title>Happy Birthday Intro</title>
     <style>
-        body { 
-            display: flex; justify-content: center; align-items: center; 
-            height: 100vh; background-color: #fce4ec; 
-            font-family: sans-serif; margin: 0; 
+        /* အခြေခံ ဒီဇိုင်းသတ်မှတ်ချက်များ */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #aed4f5; /* အပြာနုရောင် နောက်ခံ */
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
         }
-        .card { width: 300px; height: 400px; perspective: 1000px; cursor: pointer; }
-        .card-inner { 
-            position: relative; width: 100%; height: 100%; 
-            text-align: center; transition: transform 0.8s; 
-            transform-style: preserve-3d; 
+
+        /* အပေါ်ဘက် Navigation Bar */
+        .top-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 10px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
         }
-        .card:hover .card-inner { transform: rotateY(180deg); }
-        .front, .back { 
-            position: absolute; width: 100%; height: 100%; 
-            backface-visibility: hidden; display: flex; 
-            flex-direction: column; justify-content: center; 
-            align-items: center; border-radius: 20px; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
-            padding: 20px; box-sizing: border-box;
+
+        .top-nav span {
+            cursor: pointer;
         }
-        .front { background-color: #ff80ab; color: white; }
-        .back { background-color: #ffffff; color: #333; transform: rotateY(180deg); }
-        h1 { margin: 0; }
+
+        .top-nav .active {
+            color: #ffffff;
+            font-weight: bold;
+            border-bottom: 2px solid white;
+            padding-bottom: 3px;
+        }
+
+        .search-icon {
+            font-size: 18px;
+            margin-left: 10px;
+        }
+
+        /* အလယ်ဗဟို အစိတ်အပိုင်း */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* အသည်းနှလုံးနဲ့ စာသား Container */
+        .heart-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* အသည်းနှလုံးပုံ (အဖြူရောင်) */
+        .heart-svg {
+            width: 320px;
+            height: 320px;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+        }
+
+        /* မွေးနေ့ဆုတောင်းစာသား */
+        .wish-text {
+            position: absolute;
+            text-align: center;
+            color: #2b5d84; /* အပြာရင့်ရောင် စာသား */
+            font-family: 'Times New Roman', Times, serif;
+            top: 35%;
+        }
+
+        .wish-text h1 {
+            margin: 0;
+            font-size: 34px;
+            font-weight: normal;
+            letter-spacing: 2px;
+            line-height: 1.3;
+        }
+
+        /* နောက်သို့ (Back) ခလုတ် */
+        .back-button {
+            position: absolute;
+            bottom: 40px;
+            right: 20px;
+            background-color: #ffffff;
+            color: #2b5d84;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="card-inner">
-            <div class="front">
-                <h1>Happy Birthday!</h1>
-                <p>ကတ်လေးကို ဖိနှိပ်ကြည့်ပါ</p>
-            </div>
-            <div class="back">
-                <h2>ပျော်ရွှင်စရာ မွေးနေ့လေး ဖြစ်ပါစေ</h2>
-                <p>ဒီနေ့မှာ အရာအားလုံး အဆင်ပြေပြီး ပျော်ရွှင်နိုင်ပါစေလို့ ဆုတောင်းပေးလိုက်ပါတယ် ကိုကို့ချစ်လေးရေ</p>
+
+    <!-- အပေါ် Navigation အပိုင်း -->
+    <div class="top-nav">
+        <span>Home</span>
+        <span>Drama</span>
+        <span>Community</span>
+        <span>Following</span>
+        <span class="active">For You</span>
+        <span class="search-icon">🔍</span>
+    </div>
+
+    <!-- အလယ် အသည်းနှလုံးနဲ့ စာသားအပိုင်း -->
+    <div class="main-content">
+        <div class="heart-container">
+            <!-- အသည်းနှလုံးပုံ SVG Code -->
+            <svg class="heart-svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16,28.261c0,0-14-7.926-14-17.046c0-9.356,13.159-10.399,14-0.454c0.84-9.945,14-8.902,14,0.454 C30,20.335,16,28.261,16,28.261z" fill="#fffaf5"/>
+            </svg>
+            
+            <div class="wish-text">
+                <h1>HAPPY<br>BIRTHDAY</h1>
             </div>
         </div>
     </div>
+
+    <!-- နောက်သို့ ခလုတ် -->
+    <button class="back-button">နောက်သို့</button>
+
 </body>
 </html>
